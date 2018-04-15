@@ -15,7 +15,11 @@ SRC_URI = "git://github.com/htot/linux.git;protocol=https;branch=eds-4.16.0-unif
         file://i2c_chardev.cfg \
         file://configfs.cfg \
         file://usb_dwc3.cfg \
+        file://i2c_modules.cfg \
         "
+
+# kernel patches
+SRC_URI_append = "${@bb.utils.contains('DISTRO_FEATURES', 'acpi', '', 'file://0001-Add-kernel-parameter-to-enable-i2c-6-pinctrl-mapping.patch', d)}"
 
 # usefull kernel debug options here
 #
