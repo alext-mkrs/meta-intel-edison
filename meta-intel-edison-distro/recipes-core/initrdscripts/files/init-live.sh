@@ -44,6 +44,14 @@ early_setup() {
     udevadm trigger --action=add
 }
 
+acpi_load() {
+	if [ -f /usr/bin/acpi-tables-load ]; then
+		mount -t configfs configfs /sys/kernel/config
+		/usr/bin/acpi-tables-load
+		umount /sys/kernel/config
+	fi
+}
+
 read_args() {
     [ -z "$CMDLINE" ] && CMDLINE=`cat /proc/cmdline`
     for arg in $CMDLINE; do
@@ -112,6 +120,8 @@ fatal() {
 }
 
 early_setup
+
+acpi_load
 
 [ -z "$CONSOLE" ] && CONSOLE="/dev/console"
 
