@@ -16,10 +16,10 @@ SRC_URI = "git://github.com/htot/linux.git;protocol=https;branch=eds-4.16.0-unif
         file://configfs.cfg \
         file://usb_dwc3.cfg \
         "
-SRC_URI_append = " ${@bb.utils.contains('DISTRO_FEATURES', 'acpi', '', 'file://file://i2c_modules.cfg', d)}"
+SRC_URI_append = " ${@bb.utils.contains('DISTRO_FEATURES', 'acpi', '', 'file://i2c_modules.cfg', d)}"
 
 # kernel patches
-SRC_URI_append = "${@bb.utils.contains('DISTRO_FEATURES', 'acpi', '', 'file://0001-Add-kernel-parameter-to-enable-i2c-6-pinctrl-mapping.patch', d)}"
+SRC_URI_append = " ${@bb.utils.contains('DISTRO_FEATURES', 'acpi', '', 'file://0001-Add-kernel-parameter-to-enable-i2c-6-pinctrl-mapping.patch', d)}"
 SRC_URI_append = " file://0001-serial-8250_dma-use-linear-buffer-for-transmit.patch"
 SRC_URI_append = " file://0001-hsu_dma_pci-disable-interrupt.patch"
 

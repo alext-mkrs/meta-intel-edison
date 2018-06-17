@@ -20,8 +20,8 @@ PE = "1"
 # otherwise we use upstream with the following patches
 
 EDISON-PATCHES = "\
-	file://0005-HACK-dfu-add-optional-timeout.patch \
-	file://0006-HACK-mmc-sdhci-SDHCI-controllers-also-need-power.patch \
+	file://HACK-dfu-add-optional-timeout.patch \
+	file://HACK-mmc-sdhci-SDHCI-controllers-also-need-power.patch \
 "
 
 SRC_URI = "${@bb.utils.contains('DISTRO_FEATURES', \
